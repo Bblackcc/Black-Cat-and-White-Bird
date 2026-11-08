@@ -1,0 +1,111 @@
+[hidden]{display:none!important}
+.chapter-card{max-height:calc(100dvh - 40px);overflow-y:auto}
+#gameEndingOverlay{position:fixed;inset:0;z-index:40000;display:grid;place-items:center;padding:54px 32px;background:#000;color:#fcf0d0;font-family:PixelCN,monospace}
+#endingBubble{position:relative;width:min(900px,calc(100vw - 64px));max-height:calc(100dvh - 108px);padding:26px 28px 24px 148px;background:#192c3f;border:4px solid #d7d1b3;box-shadow:0 0 0 4px #152030,7px 8px #080d1b;animation:tutorialFadeIn .24s ease-out}
+#endingBubble .tutorial-copy{max-height:calc(100dvh - 166px)}
+#endingText{font-size:clamp(16px,1.35vw,21px);line-height:1.8;margin:18px 0 24px;overflow-wrap:anywhere}
+#endingBubble button,#endingResult button{font:inherit;font-size:15px;padding:9px 16px;color:#fcf0d0;background:#344959;border:3px solid #a5b7c3;box-shadow:4px 4px #08111f;cursor:pointer}
+#endingBubble .tutorial-actions>span{font-size:13px;color:#cfc7a7}
+#endingResult{text-align:center;max-width:90vw;line-height:1.8}
+#endingResult h2{font-size:clamp(20px,3vw,34px)}
+#endingResult p{font-size:16px;color:#a5b7c3;margin:20px 0}
+body.game-ending #chapterOverlay{position:fixed;z-index:41000}
+body.game-ending #battleBroadcast,body.game-ending #skillTooltipGlobal,body.game-ending #bossLore{display:none!important}
+#exitGameButton{border-color:#9a7778;background:#ead4c3}
+@media(max-width:700px){#gameEndingOverlay{padding:50px 24px}#endingBubble{width:calc(100vw - 48px);padding:20px 18px 18px 102px}#endingBubble .tutorial-portrait{left:-10px;top:-28px;width:94px;height:104px}#endingBubble .tutorial-heading{flex-wrap:wrap;font-size:20px}#endingText{font-size:15px;line-height:1.7}#endingBubble .tutorial-copy{max-height:calc(100dvh - 152px)}}
+@media(prefers-reduced-motion:reduce){#endingBubble{animation:none}}
+#phaseTwoSeal{color:#d3b6ff;font-size:12px;text-align:center}
+#dicePair.boss-many{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;justify-items:center}
+#dicePair.boss-many .dice{width:clamp(48px,6vw,82px);height:clamp(48px,6vw,82px);font-size:clamp(24px,3vw,42px)}
+#clickhint{display:none!important}
+.phase-transition span{display:none!important}
+#puppetCountSetting{flex-wrap:wrap}#puppetCountToggle{flex-basis:100%;margin:4px 0}
+.tutorial-running .game.equip-select .target-dim{display:none!important}
+.dual-puppets .enemy-wrap:not(.boss-enemy){top:auto;bottom:calc(var(--dialog-height) + 24px);width:clamp(140px,18vw,260px);min-width:0;transform:none;cursor:pointer}
+.dual-puppets #enemy{right:29%}.dual-puppets #enemy-second{right:9%}
+.dual-puppets .enemy-wrap .puppet{width:clamp(95px,14vw,190px);height:clamp(130px,27vh,280px);margin-top:6px}
+.dual-puppets .enemy-name{font-size:clamp(16px,1.6vw,25px);letter-spacing:1px}
+.dual-puppets .enemy-sub{font-size:clamp(10px,.9vw,14px)}
+.dual-puppets .enemy-bars{width:100%}.dual-puppets .enemy-bars .shield-label,.dual-puppets .enemy-numbers{font-size:clamp(12px,1.05vw,17px)}
+.enemy-wrap[role=button]:focus-visible{outline:3px solid #fff0af;outline-offset:6px}
+.enemy-selected:not(.boss-enemy) .puppet::after{content:'';position:absolute;left:12%;right:12%;height:18px;bottom:-8px;background:url('../assets/selection-ring.svg') center/100% 100% no-repeat;pointer-events:none;z-index:-1}
+.enemy-defeated{pointer-events:none;filter:grayscale(1)}
+.game:not(.boss-mode) .enemy-wrap .enemy-bars{width:min(74%,190px)!important;align-self:center;margin-top:8px}
+.game:not(.boss-mode) .enemy-wrap .enemy-hp{height:13px;border-width:2px;padding:1px;box-shadow:2px 2px #353447}
+.game:not(.boss-mode) .enemy-wrap .shield-track{height:9px;border-width:2px;padding:1px;box-shadow:1px 1px #353447}
+.game:not(.boss-mode) .enemy-wrap .enemy-numbers,.game:not(.boss-mode) .enemy-wrap .shield-label{font-size:clamp(10px,.9vw,14px);line-height:1.25;letter-spacing:0;margin:3px 0 5px;text-shadow:1px 1px #171a2f}
+.enemy-wrap.enemy-selected:not(.enemy-defeated) .puppet>img{filter:drop-shadow(1px 0 #fff) drop-shadow(-1px 0 #fff) drop-shadow(0 1px #fff) drop-shadow(0 -1px #fff) drop-shadow(0 0 5px #fff9)}
+.dual-puppets .damage-pop{font-size:clamp(22px,2.3vw,38px)!important}
+#tutorialHost{position:fixed;inset:0;z-index:20000;pointer-events:none;opacity:1;transition:opacity .48s ease}
+#tutorialBlackout{position:fixed;inset:0;z-index:19999;background:#000;opacity:1;pointer-events:none;transition:opacity .48s ease}
+#tutorialBlackout.tutorial-blackout-fading{opacity:0}
+#tutorialHost.tutorial-fading{opacity:0}
+#tutorialHost.tutorial-fading #tutorialBubble{pointer-events:none}
+#tutorialHost:not([hidden]):not(.tutorial-fading){animation:tutorialFadeIn .24s ease-out}
+@keyframes tutorialFadeIn{from{opacity:0}to{opacity:1}}
+#tutorialShade{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#tutorialBubble{position:fixed;width:min(740px,calc(100vw - 64px));max-height:calc(100dvh - 76px);overflow:visible;display:block;padding:24px 24px 22px 138px;background:#192c3ff5;color:#fcf0d0;border:4px solid #d7d1b3;box-shadow:0 0 0 4px #152030,7px 8px #080d1bd9;pointer-events:auto;image-rendering:pixelated;z-index:20020;font-family:PixelCN,monospace}
+.tutorial-portrait{position:absolute;left:-16px;top:-34px;width:128px;height:138px;display:grid;place-items:center;background:#263d52;border:4px solid #a5b7c3;box-shadow:-3px -3px #dce3d1,7px 8px #08111f,0 0 0 3px #152030;color:#f9dda0;font-size:22px;z-index:2}
+.tutorial-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;image-rendering:pixelated;background:#263d52}
+.tutorial-copy{min-width:0;max-height:calc(100dvh - 140px);overflow:auto}.tutorial-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#ffe0a0;font-size:22px}.tutorial-heading span{font-size:12px;color:#9eafb6;white-space:nowrap}
+#tutorialOutlines path{filter:drop-shadow(0 0 3px #ffffffe0)}
+.evolution-diamonds{display:inline-block;margin-left:6px;color:#58bbff!important;font-size:.78em;letter-spacing:2px;text-shadow:1px 1px #173c74;white-space:nowrap}
+.skill-tooltip-global{white-space:pre-line}
+.skill-tooltip-global .evolution-next-effect{color:#a8aebb;text-shadow:none}
+@media(min-width:701px){#tutorialBubble.skill-lesson{width:min(740px,calc(50vw - 96px))}.tutorial-running .skill-tooltip-global{max-width:calc(50vw - 36px)}#tutorialBubble.narrow-lesson{padding:22px 18px 18px}.narrow-lesson .tutorial-heading{padding-left:118px;min-height:78px;flex-wrap:wrap;align-content:center}.narrow-lesson .tutorial-copy{max-height:calc(100dvh - 132px)}}
+#tutorialText{font-size:clamp(16px,1.35vw,21px);line-height:1.65;margin:12px 0 16px;overflow-wrap:anywhere}
+#tutorialNote{display:block;color:#e9bd83;font-size:12px;line-height:1.5}
+.tutorial-actions{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.tutorial-actions button{border:2px solid #b8bdac;background:#344d59;color:#fff1d4;padding:6px 11px;font-size:14px;box-shadow:3px 3px #101b2d;cursor:pointer}
+#tutorialSkip{font-size:12px;border-color:#65798a;background:#203243;color:#b8c5c8}
+#tutorialActionHint{color:#f1dda8;font-size:16px;font-weight:700;line-height:1.5;flex:1;min-width:0;text-align:right}
+.tutorial-history{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tutorial-forward{display:flex;align-items:center;justify-content:flex-end;gap:10px;flex:1 1 180px;min-width:0}
+.tutorial-forward #tutorialNext{flex-shrink:0}
+#tutorialBack{font-size:12px;background:#2f4356;border-color:#8dabb3}
+#tutorialBack:disabled{opacity:.45;cursor:default;box-shadow:none}
+@media(max-width:700px){#tutorialActionHint{font-size:14px}}
+.tutorial-running #skillTooltipGlobal{z-index:20010}
+body:has(#emberOverlay.show) #skillTooltipGlobal{display:none!important}
+.music-panel{margin-top:20px;padding-top:16px;border-top:2px solid #59677a;text-align:left;color:#f1dfb2;font-size:14px}
+.music-controls{display:flex;align-items:center;gap:12px;margin-top:10px}
+.chapter-card .music-controls button{width:auto;min-width:86px;margin:0;padding:8px 12px;border-width:2px;font-size:14px}
+.music-controls input{min-width:0;flex:1;accent-color:#e0c984;cursor:pointer}
+.music-controls{display:grid;grid-template-columns:auto 1fr;gap:10px}
+.music-controls label{justify-self:end}
+.music-controls input{grid-column:1/-1;width:100%}
+.chapter-card{max-height:calc(100dvh - 40px);overflow-y:auto}
+#musicVolume{display:block;min-width:100px;height:28px}
+#musicVolumeValue{display:inline-block;min-width:3em;color:#fff1cf}
+.boss-retry-overlay{position:fixed;inset:0;z-index:15000;background:#050711eb;display:flex;align-items:center;justify-content:center;padding:24px}
+.boss-retry-card{width:min(600px,calc(100vw - 40px));max-height:calc(100dvh - 48px);overflow:auto;padding:26px;background:#202a40;border:4px solid #e6d49a;box-shadow:7px 8px #101629;color:#fff1cf}
+.boss-retry-card h2{margin:0 0 12px;text-align:center;font-size:26px}
+.boss-retry-card p{text-align:center;color:#c3c6d0;font-size:14px;line-height:1.6}
+.boss-retry-card button{display:block;width:100%;margin-top:16px;padding:16px;border:3px solid #ddd1a4;background:#f1e4bd;color:#292f45;text-align:left;box-shadow:4px 4px #0c1629}
+.boss-retry-card strong{font-size:19px}.boss-retry-card small{display:block;margin-top:8px;font-size:13px;line-height:1.7;color:#53556b}
+.boss-retry-card button:hover{background:#ffe39a}
+.boss-retry-card #retryCancel{background:#34445b;color:#eee7d3;text-align:center;padding:10px;font-size:14px;border-color:#6e8098}
+body:has(#bossRetryOverlay:not([hidden])) #skillTooltipGlobal{display:none!important}
+#battleBroadcast{--portrait-size:86px;--portrait-outset:12px;--portrait-rise:20px;position:absolute;left:calc(50% - 648px);right:auto;top:52px;width:400px;min-height:104px;display:block;overflow:visible;padding:22px 18px 20px calc(var(--portrait-size) - var(--portrait-outset) + 14px);border:3px solid #ded7b6;background:#1c2d40f7;box-shadow:4px 4px #101627,inset 0 0 0 2px #526475;color:#fff0ce;z-index:45;pointer-events:none;font-family:PixelCN,monospace}
+#broadcastPortrait{position:absolute;left:calc(-1 * var(--portrait-outset));top:calc(-1 * var(--portrait-rise));width:var(--portrait-size);height:var(--portrait-size);padding:0;overflow:hidden;background:#263d52;border:3px solid #a5b7c3;box-shadow:-2px -2px #dce3d1,4px 4px #08111f,0 0 0 2px #152030;z-index:1}
+#broadcastAvatar{position:static;display:block;width:100%;height:100%;margin:0;padding:0;border:0;box-shadow:none;object-fit:cover;object-position:center;image-rendering:pixelated;transform:none}
+#broadcastText{margin:0;font-size:clamp(15px,1.15vw,19px);line-height:1.65;overflow-wrap:anywhere;white-space:pre-wrap;text-shadow:1px 1px #101a2c}
+#battleBroadcast.visible{animation:broadcastAppear .24s ease-out both}
+#battleBroadcast.leaving{animation:broadcastDisappear .22s ease-in both}
+#battleBroadcast.defeat-hint{position:fixed;z-index:15010}
+@keyframes broadcastAppear{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes broadcastDisappear{from{opacity:1}to{opacity:0}}
+.broadcast-settings{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:20px;padding-top:16px;border-top:2px solid #59677a;color:#f1dfb2;font-size:14px}
+.broadcast-settings select{min-width:140px;padding:8px 10px;background:#1c2d40;color:#fff0ce;border:2px solid #a5acb6;font:inherit;cursor:pointer}
+body:has(.chapter-overlay.show) #battleBroadcast,body:has(.settings[open]) #battleBroadcast,body:has(#emberOverlay.show) #battleBroadcast,body.tutorial-running #battleBroadcast{display:none!important}
+@media(max-width:1200px){#battleBroadcast{--portrait-size:78px;min-height:100px;padding-top:20px;padding-right:14px;padding-bottom:16px}#broadcastText{font-size:14px}}
+@media(max-width:700px){#battleBroadcast{--portrait-size:64px;--portrait-outset:8px;--portrait-rise:16px;min-height:88px;padding-top:17px;padding-right:12px;padding-bottom:14px}#broadcastText{font-size:12px;line-height:1.5}}
+@media(prefers-reduced-motion:reduce){#battleBroadcast.visible,#battleBroadcast.leaving{animation:none}}
+@media(max-width:700px){#tutorialBubble{padding:18px 14px 16px 100px!important}.tutorial-portrait{left:-10px!important;top:-24px!important;width:96px!important;height:106px!important}.tutorial-copy{max-height:calc(100dvh - 132px)}}
+@media(max-width:700px){.dual-puppets #enemy{right:29%}.dual-puppets #enemy-second{right:2%}.dual-puppets .enemy-wrap:not(.boss-enemy){width:25%;top:auto;bottom:calc(var(--dialog-height) + 16px)}.dual-puppets .enemy-wrap .puppet{width:95%;height:clamp(90px,20vh,160px)}.dual-puppets .enemy-bars .shield-label,.dual-puppets .enemy-numbers{font-size:10px}.dual-puppets .enemy-name{font-size:14px}.dual-puppets .enemy-sub{font-size:9px}.dual-puppets .enemy-hp{height:12px}.dual-puppets .shield-track{height:8px}#tutorialBubble{padding:13px;gap:10px}.tutorial-portrait{flex-basis:50px;width:50px;height:58px;font-size:17px}.tutorial-heading{font-size:19px}#tutorialText{font-size:15px;line-height:1.55;margin:9px 0}.tutorial-actions{gap:7px}.tutorial-actions button{font-size:12px;padding:5px 8px}}
+
+/* Menu asides sit above the chapter backdrop, with the usual protruding portrait. */
+#battleBroadcast.menu-comment{position:fixed;z-index:42010}
+body:has(.chapter-overlay.show) #battleBroadcast.menu-comment:not([hidden]){display:block!important}
+#soldierLore{z-index:10000}
+.death-soldier .enemy-name:focus-visible{outline:2px solid #fff;outline-offset:3px}

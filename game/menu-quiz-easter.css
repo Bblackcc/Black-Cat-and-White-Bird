@@ -1,0 +1,10 @@
+.music-panel{position:relative}
+.quiz-escape-button{position:absolute;width:auto!important;min-width:0!important;margin:0!important;padding:4px 8px!important;font-size:11px!important;line-height:1.4;border:2px solid #817b65;background:#263247;color:#d4c89a;box-shadow:2px 2px #11182b;z-index:2;white-space:nowrap;transition:left .12s ease-out,top .12s ease-out}
+.quiz-escape-button:hover{transform:none;filter:brightness(1.12)}
+.quiz-escape-button:disabled{cursor:default;opacity:.7}
+#battleBroadcast.secret-quiz{position:fixed;z-index:42010}
+body:has(.chapter-overlay.show) #battleBroadcast.secret-quiz:not([hidden]),body.game-ending #battleBroadcast.secret-quiz:not([hidden]){display:block!important}
+@media(prefers-reduced-motion:reduce){.quiz-escape-button{transition:none}}
+
+.quiz-escape-button.roaming{position:fixed;z-index:42020}
+#quizDisableSecret[hidden]{display:none!important}

@@ -1,0 +1,53 @@
+.dragon-phase-three .enemy-wrap{display:flex;flex-direction:column;align-items:center;top:auto!important;bottom:calc(var(--dialog-height) + 22px);transform:none;min-width:0;text-align:center}
+.dragon-phase-three #enemy{right:25%;width:23%;z-index:2}
+.dragon-phase-three #enemy-second{right:clamp(78px,8vw,120px);width:14%;z-index:3}
+.dragon-phase-three #enemy-third{right:49%;width:14%;z-index:3}
+.dragon-phase-three .enemy-name,.dragon-phase-three .enemy-sub{transform:none!important;position:relative;z-index:6}
+.dragon-phase-three #enemy .enemy-name{font-size:clamp(22px,2.2vw,34px)}
+.dragon-phase-three .death-soldier .enemy-name{font-size:clamp(16px,1.6vw,24px);letter-spacing:1px}
+.dragon-phase-three .death-soldier .enemy-sub{font-size:clamp(10px,.9vw,14px)}
+.dragon-phase-three #enemy .puppet.boss-art{width:clamp(250px,30vw,380px)!important;height:clamp(250px,41vh,410px)!important;transform:translateX(clamp(32px,3.5vw,64px))!important;margin-top:0!important}
+.dragon-phase-three #enemy .puppet.boss-art>img{transform:translateY(-10px) scale(1.14)!important;transform-origin:center}
+/* Use the same brief shake and brightness flash in every dragon phase.
+   Independent translation preserves each stage's standing position. */
+.enemy-wrap.boss-enemy .puppet.boss-art.hit{animation:dragonHit .34s steps(2,end)}
+@keyframes dragonHit{
+ 0%,100%{translate:0 0;filter:brightness(1)}
+ 30%{translate:-13px 0;filter:brightness(2)}
+ 70%{translate:9px 0;filter:brightness(1.5)}
+}
+@media(prefers-reduced-motion:reduce){.enemy-wrap.boss-enemy .puppet.boss-art.hit{animation:dragonHitFlash .18s ease-out}@keyframes dragonHitFlash{0%,100%{filter:brightness(1)}50%{filter:brightness(2)}}}
+.dragon-phase-three #enemy .enemy-name,.dragon-phase-three #enemy .enemy-sub{transform:translateY(-30px)!important}
+.dragon-phase-three .death-soldier .puppet{width:100%;height:clamp(140px,28vh,300px);margin:8px 0 0;transform:none}
+.dragon-phase-three .death-soldier .enemy-name{order:0;margin-top:0}
+.dragon-phase-three .death-soldier .enemy-sub{order:1}
+.dragon-phase-three .death-soldier .puppet{order:2}
+.dragon-phase-three .death-soldier .puppet>img{filter:drop-shadow(1px 0 #fff) drop-shadow(-1px 0 #fff) drop-shadow(0 1px #fff) drop-shadow(0 -1px #fff) drop-shadow(0 0 5px #fffc)}
+.dragon-phase-three .death-soldier .burn-status{order:3}
+.dragon-phase-three .death-soldier .enemy-bars{order:4}
+.dragon-phase-three .enemy-wrap .enemy-bars{width:min(78%,150px);margin-top:6px!important}
+.dragon-phase-three #enemy .enemy-bars{width:min(72%,220px)}
+.dragon-phase-three .enemy-wrap .enemy-hp{height:12px;border-width:2px;padding:1px;box-shadow:2px 2px #353447}
+.dragon-phase-three .enemy-wrap .shield-track{height:8px;border-width:2px;padding:1px;box-shadow:1px 1px #353447}
+.dragon-phase-three .enemy-wrap .enemy-numbers,.dragon-phase-three .enemy-wrap .shield-label{font-size:clamp(10px,.9vw,13px);line-height:1.25;letter-spacing:0;margin:3px 0 5px}
+.dragon-phase-three .enemy-wrap .burn-status{height:24px;min-height:24px;margin-bottom:0}
+.dragon-phase-three .enemy-wrap .burn-status:not(.on){display:block;visibility:hidden}
+.dragon-phase-three .death-soldier .burn-status img{height:23px;width:14px}
+.dragon-phase-three .enemy-defeated{pointer-events:none}
+.dragon-phase-three .death-soldier.soldier-entering{animation:soldierFadeIn .42s ease-out both}
+.dragon-phase-three .death-soldier.soldier-leaving{animation:soldierFadeOut .42s ease-in both;pointer-events:none}
+@keyframes soldierFadeIn{from{opacity:0}to{opacity:1}}
+@keyframes soldierFadeOut{from{opacity:1}to{opacity:0}}
+.dragon-phase-three .turn .ap{position:relative;flex-wrap:wrap;width:max-content;max-width:300px;min-height:20px;padding-left:78px;justify-content:flex-start;gap:4px}
+.dragon-phase-three .turn .ap:before{position:absolute;left:0;top:50%;transform:translateY(-50%);width:auto;margin:0;text-align:left;white-space:nowrap}
+.ap i.stolen{background:#8757bd!important;border-color:#d8a9ff!important;box-shadow:1px 1px #3a1c5c!important}
+.ap i.stolen.off{background:#3e2c56!important;border-color:#6c557f!important}
+.dice.stolen-roll{background:#402453!important;color:#edd7ff!important;border-color:#bc85f0!important;box-shadow:5px 5px #21112f!important}
+#dicePair.phase-three-many{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;justify-items:center}
+#dicePair.phase-three-many .dice{width:clamp(44px,5.3vw,76px);height:clamp(44px,5.3vw,76px);font-size:clamp(25px,3vw,42px)}
+.skill-btn.burnout{position:relative;outline:3px solid #bc78ed;outline-offset:1px;box-shadow:0 0 0 6px #382145,5px 7px #0e1325!important}
+.burnout-count{position:absolute;right:5px;top:-13px;background:#55306a;border:2px solid #d5a3ff;color:#f5e2ff;padding:2px 5px;font-size:12px;line-height:1.3;z-index:2;white-space:nowrap}
+#phaseThreeStatus{margin-top:4px;max-width:230px;color:#dcbcff;font-size:11px;line-height:1.5;text-align:center;white-space:normal}
+@media(max-height:760px){.dragon-phase-three #enemy .puppet.boss-art{height:clamp(220px,38vh,410px)!important}.dragon-phase-three .death-soldier .puppet{height:22vh}.dragon-phase-three .enemy-wrap{bottom:calc(var(--dialog-height) + 12px)}}
+@media(max-width:700px){.dragon-phase-three #enemy{right:19%;width:30%}.dragon-phase-three #enemy-second{right:2%;width:17%}.dragon-phase-three #enemy-third{right:44%;width:16%}.dragon-phase-three .death-soldier .enemy-name{font-size:12px}.dragon-phase-three .death-soldier .enemy-sub{font-size:8px}.dragon-phase-three .death-soldier .shield-label,.dragon-phase-three .death-soldier .enemy-numbers{font-size:9px}.dragon-phase-three #enemy .enemy-name{font-size:21px}.dragon-phase-three .death-soldier .puppet{height:20vh}.dragon-phase-three #enemy .puppet.boss-art{width:clamp(160px,40vw,220px)!important;height:clamp(190px,29vh,270px)!important}.burnout-count{font-size:10px}#dicePair.phase-three-many{gap:6px}}
+@media(max-width:700px){.dragon-phase-three .turn .ap{max-width:min(260px,calc(100vw - 48px));padding-left:64px}.dragon-phase-three #enemy .puppet.boss-art{transform:translateX(20px)!important}}
